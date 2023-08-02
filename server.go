@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/elricL/poker/board"
+	"github.com/elricL/poker/game"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
@@ -31,13 +33,17 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 			conn.Close()
 			return
 		}
-		handlePokerMessage(msg, conn)
+		fmt.Println("erererer")
+		fmt.Println(poker_board)
+		var xx = &poker_board
+		fmt.Println(xx)
+		game.HandlePokerMessage(msg, &poker_board, conn)
 	}
 }
 
 func main() {
 	// command line flags
-	makeNewBoard()
+	poker_board = board.MakeNewBoard()
 	port := flag.Int("port", 9000, "port to serve on")
 	dir := flag.String("directory", "web/", "directory of web files")
 	flag.Parse()

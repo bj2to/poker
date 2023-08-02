@@ -1,4 +1,4 @@
-package main
+package cards
 
 import (
 	"math/rand"
@@ -9,7 +9,7 @@ type Deck struct {
 	iterator int
 }
 
-func (deck *Deck) makeShuffledCardPack() {
+func (deck *Deck) MakeShuffledCardPack() {
 	deck.iterator = -1
 	var niceDeck = make([]string, 52)
 	deck.cardDeck = make([]string, 52)
@@ -27,7 +27,7 @@ func (deck *Deck) makeShuffledCardPack() {
 	}
 }
 
-func (deck *Deck) getPokerCard() string {
+func (deck *Deck) GetPokerCard() string {
 	deck.iterator += 1
 	return deck.cardDeck[deck.iterator]
 }
